@@ -1,0 +1,45 @@
+<div
+  class="{{
+    modalService.isModalVisible ? 'modal_container--visible' : 'modal_container'
+  }}"
+>
+  <button class="modal_container__close" (click)="modalService.toggleModal()">
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clip-path="url(#clip0_632_977)">
+        <path
+          d="M15.25 4.75843C14.925 4.43343 14.4 4.43343 14.075 4.75843L9.99998 8.8251L5.92498 4.7501C5.59998 4.4251 5.07498 4.4251 4.74998 4.7501C4.42498 5.0751 4.42498 5.6001 4.74998 5.9251L8.82498 10.0001L4.74998 14.0751C4.42498 14.4001 4.42498 14.9251 4.74998 15.2501C5.07498 15.5751 5.59998 15.5751 5.92498 15.2501L9.99998 11.1751L14.075 15.2501C14.4 15.5751 14.925 15.5751 15.25 15.2501C15.575 14.9251 15.575 14.4001 15.25 14.0751L11.175 10.0001L15.25 5.9251C15.5666 5.60843 15.5666 5.0751 15.25 4.75843Z"
+          fill="#fff"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_632_977">
+          <rect width="20" height="20" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  </button>
+  <div class="modal_container__modal">
+    <div class="modal_container__modal__head">
+      <h2 class="modal_container__modal__head__title">
+        {{
+          modalService.mode === "add"
+            ? "Añadir nueva materia"
+            : "Editar materia"
+        }}
+      </h2>
+    </div>
+    <div class="modal_container__modal__body">
+      <dadb-save-form *ngIf="!subjectId"></dadb-save-form>
+      <dadb-edit-form
+        *ngIf="subjectId"
+        [subjectId]="subjectId"
+      ></dadb-edit-form>
+    </div>
+  </div>
+</div>

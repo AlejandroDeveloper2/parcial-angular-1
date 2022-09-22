@@ -1,0 +1,38 @@
+.app_logo, .app_logo--modified{
+    width: 7.3em;
+    height: 9.2em;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.app_logo__text, .app_logo__text--orange, .app_logo__text--white{
+    font-size:24px;
+    font-weight:bold;
+    color:var(--gray);
+    text-align: center;
+}
+.app_logo__text--orange{   
+    color:var(--primary-color);
+    margin-left: 0.2em;
+}
+.app_logo__text--white{
+    color:var(--white);
+    margin-left: 0.2em;
+}
+
+/* Responsive design */
+@media (min-width: 768px){
+    .app_logo{
+        justify-content:center;
+        gap:1em;
+    }
+    .app_logo__text,.app_logo__text--orange, .app_logo__text--white{
+        font-size:32px;
+    }
+    .app_logo--modified{
+        flex-direction:row;
+        gap:0.5em;
+    }
+}

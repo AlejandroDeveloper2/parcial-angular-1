@@ -1,0 +1,100 @@
+.section{
+    width: 100vw;
+    display: flex;
+    justify-content:center;
+    flex-direction:column;
+    align-items:center;
+    gap:2em;
+}
+
+.section__indicator{
+    display: inline-flex;
+    justify-content:center;
+    align-items:center;
+    gap:0.6em;
+}
+
+.section__indicator__text{
+    color:var(--gray);
+    font-weight:500;
+    text-align: center;
+    font-size:14px;
+}
+
+.section__table_container{
+    width:90%;
+    overflow:scroll;
+}
+.section__table_container__table{
+    table-layout: fixed;
+    width:100%;
+}
+
+.section__table_container__table__head th{  
+    text-align:center;
+    font-size: 14px;
+    color:var(--gray);
+    font-weight:800;
+    vertical-align: top;
+    word-wrap: break-word;
+    width: 100px;
+    padding:1em 0;
+}
+
+.section__table_container__table__body {
+    background-color: var(--light-gray);
+}
+
+.section__table_container__table__body,  .section__table_container__table__body__tr, .section__table_container__table__body__td{
+    font-size: 14px;
+    color:var(--gray);
+    font-weight:500;
+    color: var(--gray);
+    width: 100px;
+    text-align: center;
+    vertical-align: center;
+    word-wrap: break-word;
+    padding:1em 0;
+}
+
+.section__table_container__table__body__id{
+    background-color: var(--primary-color);
+    color:var(--white);
+}
+
+.button, .button--actions{
+    height:4em;
+    padding:0 1em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap:0.3em;
+    border:none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+}
+
+.button--actions{
+    width:3em;
+    height:3em;
+    gap:0;
+    padding:0;
+    margin-right:0.2em;
+}
+
+.button__text{
+    color:var(--white);
+    font-weight:500;
+    text-align: center;
+}
+
+
+@media (min-width: 768px){
+    .section__indicator__text{
+        font-size:16px;
+    }
+    .button--actions{
+        margin-right:1em;
+    }
+}

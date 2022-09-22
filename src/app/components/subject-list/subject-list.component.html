@@ -1,0 +1,137 @@
+<section class="section">
+  <div class="section__indicator">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clip-path="url(#clip0_5_185)">
+        <path
+          d="M3 13H5V11H3V13ZM3 17H5V15H3V17ZM3 9H5V7H3V9ZM7 13H21V11H7V13ZM7 17H21V15H7V17ZM7 7V9H21V7H7ZM3 13H5V11H3V13ZM3 17H5V15H3V17ZM3 9H5V7H3V9ZM7 13H21V11H7V13ZM7 17H21V15H7V17ZM7 7V9H21V7H7Z"
+          fill="#827A7A"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_5_185">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+    <p class="section__indicator__text">
+      {{ subjects ? subjects!.length : 0 }} Registros encontrados
+    </p>
+  </div>
+  <div class="section__table_container">
+    <table class="section__table_container__table">
+      <thead class="section__table_container__table__head">
+        <th>#</th>
+        <th>Materia</th>
+        <th>Semestre</th>
+        <th>Nota 1</th>
+        <th>Nota 2</th>
+        <th>Nota 3</th>
+        <th>Promedio</th>
+        <th>Acciones</th>
+      </thead>
+      <tbody class="section__table_container__table__body">
+        <tr
+          *ngFor="let subject of subjects"
+          class="section__table_container__table__body__tr"
+        >
+          <td class="section__table_container__table__body__id">
+            {{ subject.id }}
+          </td>
+          <td class="section__table_container__table__body__td">
+            {{ subject.subject }}
+          </td>
+          <td class="section__table_container__table__body__td">
+            {{ subject.semester }}
+          </td>
+          <td class="section__table_container__table__body__td">
+            {{ subject.first_qualification }}
+          </td>
+          <td class="section__table_container__table__body__td">
+            {{ subject.second_qualification }}
+          </td>
+          <td class="section__table_container__table__body__td">
+            {{ subject.third_qualification }}
+          </td>
+          <td class="section__table_container__table__body__td">
+            {{ subject.average }}
+          </td>
+          <td class="section__table_container__table__body__td">
+            <button
+              class="button--actions"
+              title="Editar materia"
+              (click)="toggleEditModal('edit', subject)"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_7_158)">
+                  <path
+                    d="M3 17.25V21H6.75L17.81 9.94L14.06 6.19L3 17.25ZM5.92 19H5V18.08L14.06 9.02L14.98 9.94L5.92 19ZM20.71 5.63L18.37 3.29C18.17 3.09 17.92 3 17.66 3C17.4 3 17.15 3.1 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_7_158">
+                    <rect width="24" height="24" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+            <button class="button--actions" title="Eliminar materia">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_7_167)">
+                  <path
+                    d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_7_167">
+                    <rect width="24" height="24" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="button" (click)="toggleSaveModal('add')">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clip-path="url(#clip0_5_157)">
+        <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="white" />
+      </g>
+      <defs>
+        <clipPath id="clip0_5_157">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+    <span class="button__text">Agregar Materia</span>
+  </button>
+</section>
+
+<dadb-modal [subjectId]="subjectId"> </dadb-modal>

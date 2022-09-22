@@ -1,0 +1,110 @@
+.begin_form_container{
+    width:100vw;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    gap: 50px;
+    margin-top:2em;
+    background-color: var(--white);
+    align-items:center;
+}
+
+.begin_form_container__form{
+    width:100%;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    gap: 25px;
+    align-items:center;
+}
+
+.begin_form_container__form__input_container{
+    width:70%;
+    height:3.8em;
+    display:inline-block;
+    background-color: var(--light-gray);
+    border-radius:10px;
+    position:relative;
+}
+
+.begin_form_container__form__input_container__icon{
+    position:absolute;
+    left:0;
+    top:0;
+    height:100%;
+    width: 3.6em;
+    background-color: var(--primary-color);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    z-index: 10;
+}
+
+.begin_form_container__form__input_container__input{
+    position:absolute;
+    right:0;
+    top:0;
+    width: calc(100% - 3.6em);
+    height:100%;
+    background-color: var(--light-gray);
+    padding: 0 0.5em;
+    border: none;
+    border-bottom-right-radius:10px;
+    border-top-right-radius: 10px;
+    outline: none;
+    color:var(--gray);
+    font-size: 18px;
+}
+
+.begin_form_container__form__input_container__input::placeholder{
+    color: var(--placeholder-color);
+}
+
+.begin_form_container__form__button{
+    width: 70%;
+    height: 4.6em;
+    background-color: var(--secondary-color);
+    border-radius:10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border:none;
+    gap:2px;
+    cursor: pointer;
+    transition: all 0.6s ease-in;
+}
+
+.begin_form_container__form__button__text{
+    color: var(--gray);
+    font-weight:500;
+    text-align: center;
+    font-size:18px;
+    transition: all 0.6s ease-in;
+}
+
+.begin_form_container__form__button svg g path{
+   transition:all 0.6s ease-in;
+}
+
+/* Responsive design */
+@media (min-width: 768px){
+    .begin_form_container{
+        width:30em;
+        border:1px solid var(--gray);
+        border-radius:20px;
+        padding:2em 0;
+        gap: 40px;
+        margin-top:15em;
+    }
+    .begin_form_container__form__button:hover{
+       background-color:var(--primary-color);
+    }
+    .begin_form_container__form__button:hover .begin_form_container__form__button__text{
+        color:var(--white);
+        transform:translateX(0.2em);
+    }
+    .begin_form_container__form__button:hover svg g path{
+        fill:var(--white);
+    }
+}

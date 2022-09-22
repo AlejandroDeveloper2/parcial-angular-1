@@ -1,0 +1,11 @@
+.main_container{
+    width:100vw;
+    height:100vh;
+    background-color:var(--white);
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    flex-direction:column;
+    position:relative;
+    overflow-x:hidden;
+}
