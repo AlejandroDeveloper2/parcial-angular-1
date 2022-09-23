@@ -20,7 +20,10 @@
       </defs>
     </svg>
     <p class="section__indicator__text">
-      {{ subjects ? subjects!.length : 0 }} Registros encontrados
+      {{
+        subjectListService.subjects ? subjectListService.subjects!.length : 0
+      }}
+      Registros encontrados
     </p>
   </div>
   <div class="section__table_container">
@@ -37,7 +40,7 @@
       </thead>
       <tbody class="section__table_container__table__body">
         <tr
-          *ngFor="let subject of subjects"
+          *ngFor="let subject of subjectListService.subjects"
           class="section__table_container__table__body__tr"
         >
           <td class="section__table_container__table__body__id">
@@ -87,7 +90,11 @@
                 </defs>
               </svg>
             </button>
-            <button class="button--actions" title="Eliminar materia">
+            <button
+              class="button--actions"
+              title="Eliminar materia"
+              (click)="deleteSubject(subject)"
+            >
               <svg
                 width="24"
                 height="24"
@@ -134,4 +141,4 @@
   </button>
 </section>
 
-<dadb-modal [subjectId]="subjectId"> </dadb-modal>
+<dadb-modal [subjectId]="subjectListService.subjectId"> </dadb-modal>

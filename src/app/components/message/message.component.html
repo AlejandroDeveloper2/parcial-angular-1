@@ -27,9 +27,17 @@
     </button>
   </div>
   <div
-    class="messagesContainer__messageBody"
-    *ngFor="let message of messageService.messages"
+    class="{{
+      messageService.messages.length > 0
+        ? 'messagesContainer__messages'
+        : 'messagesContainer__messages--mod'
+    }}"
   >
-    <p class="messagesContainer__messageBody__text">{{ message }}</p>
+    <div
+      class="messagesContainer__messageBody"
+      *ngFor="let message of messageService.messages"
+    >
+      <p class="messagesContainer__messageBody__text">{{ message }}</p>
+    </div>
   </div>
 </div>

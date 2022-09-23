@@ -14,8 +14,25 @@ const calculateQualificationsAverage = (qualifications: number[]): number => {
     0
   );
   average = summation / qualifications.length;
-  console.log(average);
-  return average;
+  return Number(average.toFixed(2));
 };
 
-export { checkEmptyFields, calculateQualificationsAverage };
+const validateNumberFileds = (numberFields: number[]): boolean => {
+  let thereAnError: boolean;
+  for (let i = 0; i < numberFields.length; i++) {
+    const element = numberFields[i];
+    if (element < 0 || element > 5) {
+      thereAnError = true;
+      break;
+    } else {
+      thereAnError = false;
+    }
+  }
+  return thereAnError!;
+};
+
+export {
+  checkEmptyFields,
+  calculateQualificationsAverage,
+  validateNumberFileds,
+};

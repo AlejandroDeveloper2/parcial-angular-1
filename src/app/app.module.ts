@@ -16,6 +16,7 @@ import { SubjectListComponent } from './components/subject-list/subject-list.com
 import { ModalComponent } from './components/modal/modal.component';
 import { SaveFormComponent } from './components/save-form/save-form.component';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
+import { SubjectSearchComponent } from './components/subject-search/subject-search.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { EditFormComponent } from './components/edit-form/edit-form.component';
     ModalComponent,
     SaveFormComponent,
     EditFormComponent,
+    SubjectSearchComponent,
   ],
   imports: [
     BrowserModule,

@@ -46,6 +46,17 @@ export class SubjectsServiceService {
     );
   }
 
+  addSubject(subject: Subject): Observable<Subject> {
+    return this.http
+      .post<Subject>(this.subjectsUrl, subject, this.httpOptions)
+      .pipe(
+        tap((newSubject: Subject) =>
+          this.addMessage(`Materia creada correctamente w/id=${newSubject.id}`)
+        ),
+        catchError(this.handleError<Subject>('addSubject'))
+      );
+  }
+
   updateSubject(subject: Subject): Observable<any> {
     return this.http.put(this.subjectsUrl, subject, this.httpOptions).pipe(
       tap((_) =>
@@ -53,5 +64,29 @@ export class SubjectsServiceService {
       ),
       catchError(this.handleError<any>('updateSubject'))
     );
+  }
+
+  deleteSubject(id: number): Observable<Subject> {
+    const url = `${this.subjectsUrl}/${id}`;
+    return this.http.delete<Subject>(url, this.httpOptions).pipe(
+      tap((_) => this.addMessage(`Materia borrada correctamente! id = ${id}`)),
+      catchError(this.handleError<Subject>('deleteSubject'))
+    );
+  }
+
+  searchSubjectByName(term: string): Observable<Subject[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http
+      .get<Subject[]>(`${this.subjectsUrl}/?subject=${term}`)
+      .pipe(
+        tap((x) =>
+          x.length
+            ? this.addMessage(`Materias que coinciden con "${term}"`)
+            : this.addMessage(`No hay materias que coincidan con "${term}"`)
+        ),
+        catchError(this.handleError<Subject[]>('searchSubjectByName', []))
+      );
   }
 }

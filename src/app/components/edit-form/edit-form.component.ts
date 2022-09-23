@@ -4,9 +4,11 @@ import { Subject } from '../../interfaces/Subject';
 import { SubjectsServiceService } from '../../services/subjectsService/subjects-service.service';
 import { ModalService } from '../../services/modalService/modal.service';
 import { MessageService } from '../../services/messageService/message.service';
+import { SubjectListService } from '../../services/subjectListService/subject-list.service';
 import {
   calculateQualificationsAverage,
   checkEmptyFields,
+  validateNumberFileds,
 } from '../../helpers';
 
 @Component({
@@ -22,7 +24,8 @@ export class EditFormComponent implements OnInit {
   constructor(
     private subjectsServiceService: SubjectsServiceService,
     private modalService: ModalService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private subjectListService: SubjectListService
   ) {}
 
   getSubject(): void {
@@ -49,8 +52,21 @@ export class EditFormComponent implements OnInit {
         this.selectedSubject.subject,
         this.selectedSubject.semester,
       ]);
+      const numberFieldsOk = validateNumberFileds([
+        this.selectedSubject.first_qualification,
+        this.selectedSubject.second_qualification,
+        this.selectedSubject.third_qualification,
+      ]);
+
       if (thereAnError) {
         this.messageService.addMesage('Campos obligatorios!');
+        return;
+      }
+
+      if (numberFieldsOk) {
+        this.messageService.addMesage(
+          'Las calificaciones deben estar entre 0 y 5!'
+        );
         return;
       }
       this.getQualificationsAverage([
@@ -62,7 +78,10 @@ export class EditFormComponent implements OnInit {
         .updateSubject(this.selectedSubject)
         .subscribe(() => {
           this.modalService.toggleModal();
-          this.subjectsServiceService.getSubjects();
+          this.subjectListService.subjects![this.subjectId! - 1] =
+            this.selectedSubject!;
+          this.subjectListService.subjects![this.subjectId! - 1].average =
+            this.average;
         });
     }
   }

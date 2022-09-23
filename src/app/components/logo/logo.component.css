@@ -23,7 +23,7 @@
 }
 
 /* Responsive design */
-@media (min-width: 768px){
+@media (min-width:  920px){
     .app_logo{
         justify-content:center;
         gap:1em;
